@@ -204,7 +204,9 @@ class LogStash::Outputs::ClickHouse < LogStash::Outputs::Base
       make_request(documents, hosts, query, con_count+1, req_count, host, uuid)
     end
 
-    client.execute!
+    Thread.new do
+      client.execute!
+    end
   end
 
   # This is split into a separate method mostly to help testing
