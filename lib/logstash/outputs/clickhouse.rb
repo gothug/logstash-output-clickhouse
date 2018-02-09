@@ -146,6 +146,7 @@ class LogStash::Outputs::ClickHouse < LogStash::Outputs::Base
     res
   end
 
+  public
   def flush(events, close=false)
     documents = ""  #this is the string of hashes that we push to Fusion as documents
 
